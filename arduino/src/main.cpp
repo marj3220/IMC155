@@ -1,9 +1,13 @@
 #include <Arduino.h>
+#include <Wire.h>
 #include "Adafruit_HTU31D.h"
 #include "Adafruit_SGP30.h"
+#include "SparkFun_I2C_Mux_Arduino_Library.h"
 
 Adafruit_HTU31D htu = Adafruit_HTU31D();
 //Adafruit_SGP30 sgp = Adafruit_SGP30();
+QWIICMUX myMux;
+
 uint32_t timestamp;
 
 void purgeMoisture(int time_delay)
@@ -16,6 +20,7 @@ void purgeMoisture(int time_delay)
 void setup()
 {
   Serial.begin(115200);
+  Wire.begin();
   while (!Serial)
   {
     delay(10); //wait till serial port opens
@@ -34,5 +39,7 @@ void loop()
   htu.getEvent(&humidity, &temp);
   //sgp.eCO2;
   //sgp.TVOC;
+  Serial.println(humidity.relative_humidity);
+  Serial.println(temp.temperature);
   timestamp = millis();
 }
