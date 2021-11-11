@@ -1,4 +1,4 @@
-#Matrice 3x3 test chaque ligne (vecteur) est une bande de 3 capteurs
+#Matrice n x m test chaque ligne (vecteur) est une bande de n capteurs
 T=[
     [1,2,4],
     [3,4,2],
