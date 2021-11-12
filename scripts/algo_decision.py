@@ -1,23 +1,18 @@
 #Matrice n x m test chaque ligne (vecteur) est une bande de n capteurs
 T=[
     [1,2,4],
-    [3,4,2],
-    [2,3,3],
-    [4,4,3]
+    [2,3,5],
+    [4,5,6]
     ]
 nb_strip = len(T) # nombre de strip de capteur
 nb_sensor = len(T[0]) # nombre de capteur par strip
-d_capt = 1 # Distance entre les capteurs sur une même bande
-d_strip = 1 # Distance entre les bandes
 T_seuil = 3 # Température de seuil (si plus bas = alerte)
-# algo de décision
+# Flag sur les températures basses 
 flag_T = [[0 for i in range(nb_sensor)] for j in range(nb_strip)]
 for i in range(len(T)):
     for j in range(len(T[1])):
         if T[i][j] <= T_seuil:
-            flag_T[i][j] = 'We good'
-        else:
-            flag_T[i][j] = "Get u're ass outside!"
+            flag_T[i][j] = 1 # Si température plus petite ou égal au seuil, valeur devient 1 sinon reste 0
 #display
 print('\n')
 print('T = ',T)
