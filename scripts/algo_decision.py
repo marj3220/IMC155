@@ -1,4 +1,9 @@
 #Matrice n x m test chaque ligne (vecteur) est une bande de n capteurs
+from alert_sender import AlertSender
+
+DATA: list = []
+
+alerter = AlertSender()
 T=[
     [1,2,4],
     [2,3,5],
@@ -13,6 +18,8 @@ for i in range(len(T)):
     for j in range(len(T[1])):
         if T[i][j] <= T_seuil:
             flag_T[i][j] = 1 # Si température plus petite ou égal au seuil, valeur devient 1 sinon reste 0
+            alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+            DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
 #display
 print('\n')
 print('T = ',T)
