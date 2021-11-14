@@ -7,10 +7,8 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.path = '/scripts/index.html'
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
-# Create an object of the above class
-#handler_object = MyHttpRequestHandler
-handler_object = http.server.SimpleHTTPRequestHandler
-
-PORT = 8090
-with socketserver.TCPServer(("", PORT), handler_object) as httpd:
-    httpd.serve_forever()
+def web_server():
+    handler_object = MyHttpRequestHandler
+    PORT = 8080
+    with socketserver.TCPServer(("", PORT), handler_object) as httpd:
+        httpd.serve_forever()
