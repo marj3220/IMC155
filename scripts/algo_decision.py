@@ -1,8 +1,9 @@
 #Matrice n x m test chaque ligne (vecteur) est une bande de n capteurs
 T=[
-    [1,2,4],
-    [2,3,5],
-    [4,5,6]
+    [5,5,5,5],
+    [5,2,2,5],
+    [5,2,2,5],
+    [5,5,5,5]
     ]
 nb_strip = len(T) # nombre de strip de capteur
 nb_sensor = len(T[0]) # nombre de capteur par strip
