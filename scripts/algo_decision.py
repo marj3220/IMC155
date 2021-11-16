@@ -1,30 +1,78 @@
-#Matrice n x m test chaque ligne (vecteur) est une bande de n capteurs
-from alert_sender import AlertSender
+#from alert_sender import AlertSender
 
-DATA: list = []
+#DATA: list = []
 
-alerter = AlertSender()
+#alerter = AlertSender()
+
+last_T=[
+    [2,5,5,5],
+    [5,5,3,5],
+    [5,4,5,5],
+    [5,5,5,5]
+    ]
 T=[
-    [5,5,5,5],
-    [5,2,2,5],
-    [5,2,2,5],
+    [2,5,5,5],
+    [5,5,2,5],
+    [5,3,5,5],
     [5,5,5,5]
     ]
 nb_strip = len(T) # nombre de strip de capteur
 nb_sensor = len(T[0]) # nombre de capteur par strip
 T_seuil = 3 # Température de seuil (si plus bas = alerte)
 # Flag sur les températures basses 
-flag_T = [[0 for i in range(nb_sensor)] for j in range(nb_strip)]
-for i in range(len(T)):
-    for j in range(len(T[1])):
-        if T[i][j] <= T_seuil:
-            flag_T[i][j] = 1 # Si température plus petite ou égal au seuil, valeur devient 1 sinon reste 0
-            alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
-            DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+map = [[0 for i in range(2*nb_sensor+1)] for j in range(2*nb_strip+1)]
+for i in range(nb_strip):
+    for j in range(nb_sensor):
+        if T[i][j] <= T_seuil: # dans ce cas, valeur dans flag = 1 sinon reste 0
+            #if last_T[i][j] > T_seuil: # notification par textos
+                #alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+            if i == 0 and j == 0:
+                i_map = i + 1
+                j_map = i_map
+            elif i == 0 and j != 0:
+                i_map = i + 1
+                if j == nb_sensor - 1:
+                    j_map = 2 ** j - 1
+                else:
+                    j_map = 2 ** j +1
+            elif i != 0 and j == 0: # pense pas j == 0 nécessaire......
+                j_map = j + 1
+                if i == nb_strip - 1:
+                    i_map = 2 ** i -1
+                else:
+                    i_map = 2 ** i + 1
+            elif i == nb_strip - 1 and j == nb_sensor - 1:
+                i_map = 2 ** i - 1
+                j_map = 2 ** j - 1
+            elif i != nb_strip - 1 and j == nb_sensor - 1:
+                i_map = 2 ** i + 1
+                j_map = 2 ** j - 1
+            elif i == nb_strip - 1 and j != nb_sensor - 1:
+                i_map = 2 ** i - 1
+                j_map = 2 ** j + 1
+            else:
+                i_map = 2 ** i + 1
+                j_map = 2 ** j + 1
+            map[i_map][j_map] = 1
+            for n in range(i_map-1,i_map+2): # sources de chaleur
+                for m in range(j_map-1,j_map+2):
+                    if n == i_map and m == j_map:
+                        pass
+                    else:
+                        map[n][m] = 2
+            #DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
 #display
 print('\n')
-print('T = ',T)
 print('Nombre de bandes : ',nb_strip)
 print('Nombre de capteurs par bandes :',nb_sensor)
-print('État a chaque capteurs :\n',flag_T)
+print('map = ',len(map),'x',len(map[0]))
+print('Anciennes températures')
+for i in range(len(last_T)):
+    print(last_T[i])
+print('Nouvelles températures :')
+for i in range(nb_strip):
+    print(T[i])
+print('Mapping du vignoble :')
+for i in range(len(map)):
+    print(map[i])
 print('\n')    
