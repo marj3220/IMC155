@@ -9,6 +9,6 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 def web_server():
     handler_object = MyHttpRequestHandler
-    PORT = 8090
+    PORT = 8080
     with socketserver.TCPServer(("", PORT), handler_object) as httpd:
         httpd.serve_forever()
