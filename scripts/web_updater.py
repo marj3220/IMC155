@@ -3,12 +3,13 @@
 import asyncio
 import websockets
 from algo_decision import DATA
+import json
 
 async def update(websocket, path):
     """Coroutine that sends data through websocket"""
     while True:
         if DATA:
-            data = DATA.pop()
+            data = json.dumps(DATA.pop())
             await websocket.send(data)
         await asyncio.sleep(5)
 

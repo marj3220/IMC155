@@ -1,6 +1,6 @@
 #from alert_sender import AlertSender
 
-#DATA: list = []
+DATA: list = []
 
 #alerter = AlertSender()
 
@@ -60,7 +60,8 @@ for i in range(nb_strip):
                         pass
                     else:
                         map[n][m] = 2
-            #DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+            DATA.append(map)
+            DATA.append(map)
 #display
 print('\n')
 print('Nombre de bandes : ',nb_strip)
