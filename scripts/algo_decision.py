@@ -29,13 +29,13 @@ for i in range(nb_strip):
             if i == 0 and j == 0:
                 i_map = i + 1
                 j_map = i_map
-            elif i == 0 and j != 0:
+            elif i == 0:
                 i_map = i + 1
                 if j == nb_sensor - 1:
                     j_map = 2 ** j - 1
                 else:
                     j_map = 2 ** j +1
-            elif i != 0 and j == 0: # pense pas j == 0 nécessaire......
+            elif j == 0: # pense pas j == 0 nécessaire....
                 j_map = j + 1
                 if i == nb_strip - 1:
                     i_map = 2 ** i -1
@@ -44,10 +44,10 @@ for i in range(nb_strip):
             elif i == nb_strip - 1 and j == nb_sensor - 1:
                 i_map = 2 ** i - 1
                 j_map = 2 ** j - 1
-            elif i != nb_strip - 1 and j == nb_sensor - 1:
+            elif j == nb_sensor - 1:
                 i_map = 2 ** i + 1
                 j_map = 2 ** j - 1
-            elif i == nb_strip - 1 and j != nb_sensor - 1:
+            elif i == nb_strip - 1:
                 i_map = 2 ** i - 1
                 j_map = 2 ** j + 1
             else:
