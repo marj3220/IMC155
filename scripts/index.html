@@ -18,12 +18,18 @@
       messages = document.createElement('ul');
   ws.onmessage = function (event) {
       var messages = document.getElementsByTagName('ul')[0],
-          message = document.createElement('li'),
-          content = document.createTextNode(event.data);
-      message.appendChild(content);
-      messages.appendChild(message);
+      message = document.createElement('li'),
+      data = JSON.parse(event.data);
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        var data_line = data[i];
+        console.log(data[i]);
+        for (var j = 0; j < data_line.length; j++) {
+          console.log(j);
+          console.log(data_line[j]);
+        }
+      }
   };
-  document.body.appendChild(messages);
 </script>
 
 </html>

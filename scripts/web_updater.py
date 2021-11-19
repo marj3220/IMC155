@@ -2,24 +2,14 @@
 
 import asyncio
 import websockets
-import random
-
 from algo_decision import DATA
-
-async def producer():
-    """Coroutine that produces the data that is destined to be sent to the webpage"""
-    while True:
-        # Produce a random number and send it to the consumer
-        r = random.randint(0, 20)
-        # Wait here until next() is called
-        yield r
-
+import json
 
 async def update(websocket, path):
     """Coroutine that sends data through websocket"""
     while True:
         if DATA:
-            data = DATA.pop()
+            data = json.dumps(DATA.pop())
             await websocket.send(data)
         await asyncio.sleep(5)
 

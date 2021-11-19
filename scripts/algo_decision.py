@@ -1,6 +1,6 @@
 #from alert_sender import AlertSender
 
-#DATA: list = []
+DATA: list = []
 
 #alerter = AlertSender()
 
