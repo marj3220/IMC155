@@ -44,75 +44,124 @@
     <h1>Affichage des données récoltées
          par les capteurs de température et d'humidité en temps réel  </h1>
          <h2>Carte thermique du vignoble</h2>
+         <!--Image du sol du vignoble -->
          <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px; height:700px; z-index:1; opacity:0.75"></div>
 
-         <div><img src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
-         <div><img src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:500px; top: 580px; height:100px; z-index:2"></div>
-         <div><img src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:850px; top: 580px; height:100px; z-index:2"></div>
+         <!--Capteurs -->
+         <!--Capteur position 1x1 -->
+         <div><img class="sensor" id="sensor11" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb11" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 1x2 -->
+         <div><img class="sensor" id="sensor12" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:500px; top: 580px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb12" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:500px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 1x3 -->         
+         <div><img class="sensor" id="sensor13" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:850px; top: 580px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb13" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:850px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x1 --> 
+         <div><img class="sensor" id="sensor21" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:170px; top: 1000px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb21" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:170px; top: 1000px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x2 --> 
+         <div><img class="sensor" id="sensor22" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:500px; top: 1000px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb22" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:500px; top: 1000px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x3 --> 
+         <div><img class="sensor" id="sensor23" src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:850px; top: 1000px; height:100px; z-index:2"></div>
+         <div><img class="sensorb" id="sensorb23" src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:850px; top: 1000px; height:100px; z-index:2"></div>
 
-         <div><img src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
-         <div><img src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:500px; top: 580px; height:100px; z-index:2"></div>
-         <div><img src="images/sensorb.jpeg" alt="sensor cold" style="position:absolute; left:850px; top: 580px; height:100px; z-index:2"></div>
+
+         <!--Sources de chaleur -->
+         <!--Sources de chaleur active pour capteur 1x1 -->
+         <div><img class="fire" id="fire11" src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire12" src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire21" src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 670px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire22" src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x1 et/ou 1x2-->
+         <div><img class="fire" id="fire13" src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire23" src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 670px; height:70px; z-index:2"></div>
+
+         <!--Sources de chaleur active pour capteur 1x2--> 
+         <div><img class="fire" id="fire14" src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire24" src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x2 et/ou 1x3-->
+         <div><img class="fire" id="fire15" src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire25" src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x3-->
+         <div><img class="fire" id="fire16" src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire26" src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 670px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire17" src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire27" src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 670px; height:70px; z-index:2"></div>
+
+
+
+         <!--Sources de chaleur active pour capteur 2x1-->
+         <div><img class="fire" id="fire41" src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire51" src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 1080px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire42" src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire52" src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x1 et/ou 2x2-->
+         <div><img class="fire" id="fire43" src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire53" src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 1080px; height:70px; z-index:2"></div>         
+         
+         <!--Sources de chaleur active pour capteur 2x2-->
+         <div><img class="fire" id="fire44" src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 950px; height:70px; z-index:2"></div>         
+         <div><img class="fire" id="fire54" src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x2 et/ou 2x3-->
+         <div><img class="fire" id="fire45" src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire55" src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x3-->
+         <div><img class="fire" id="fire46" src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire56" src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 1080px; height:70px; z-index:2"></div>         
+         <div><img class="fire" id="fire47" src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire57" src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 1080px; height:70px; z-index:2"></div>
          
 
+         <!--Sources de chaleur active pour capteurs 1x1 ET 2x1-->
+         <div><img class="fire" id="fire31" src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 810px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire32" src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 810px; height:70px; z-index:2"></div>         
 
-         <div><img src="images/sensor.jpeg" alt="sensor" style="position:absolute; left:170px; top: 1000px; height:100px; z-index:2"></div>
-         <div><img src="images/sensor.jpeg" alt="sensor cold" style="position:absolute; left:500px; top: 1000px; height:100px; z-index:2"></div>
-         <div><img src="images/sensor.jpeg" alt="sensor cold" style="position:absolute; left:850px; top: 1000px; height:100px; z-index:2"></div>
+         <!--Sources de chaleur active pour capteurs (1x1 ET 2x1) et/ou (1x2 ET 2x2)-->
+         <div><img class="fire" id="fire33" src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 810px; height:70px; z-index:2"></div>
 
-         <div><img src="images/sensorb.jpeg" alt="sensor" style="position:absolute; left:170px; top: 1000px; height:100px; z-index:2"></div>
-         <div><img src="images/sensorb.jpeg" alt="sensor" style="position:absolute; left:500px; top: 1000px; height:100px; z-index:2"></div>
-         <div><img src="images/sensorb.jpeg" alt="sensor" style="position:absolute; left:850px; top: 1000px; height:100px; z-index:2"></div>
+         <!--Sources de chaleur active pour capteurs 1x2 ET 2x2-->
+         <div><img class="fire" id="fire34" src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 810px; height:70px; z-index:2"></div>
 
+         <!--Sources de chaleur active pour capteurs (1x2 ET 2x2) et/ou (1x3 ET 2x3)-->         
+         <div><img class="fire" id="fire35" src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 810px; height:70px; z-index:2"></div>
 
-
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:70px; top: 1080px; height:70px; z-index:2"></div>
-
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:350px; top: 1080px; height:70px; z-index:2"></div>
-
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:700px; top: 1080px; height:70px; z-index:2"></div>
-         
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 1080px; height:70px; z-index:2"></div>
-
-
-         
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 520px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 520px; height:70px; z-index:2"></div>
-         
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 670px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 670px; height:70px; z-index:2"></div>
-
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 810px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 810px; height:70px; z-index:2"></div>
-
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 950px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 950px; height:70px; z-index:2"></div>
-      
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:200px; top: 1080px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:530px; top: 1080px; height:70px; z-index:2"></div>
-         <div><img src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 1080px; height:70px; z-index:2"></div>
+         <!--Sources de chaleur active pour capteurs 1x3 ET 2x3-->
+         <div><img class="fire" id="fire37" src="images/fire.jpeg" alt="heater" style="position:absolute; left:1000px; top: 810px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire36" src="images/fire.jpeg" alt="heater" style="position:absolute; left:870px; top: 810px; height:70px; z-index:2"></div>
 
          <p>Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
          
 </body>
+<script>
+WebSocket
+  for (let index = 0; Data < array.length; Data++) 
+  {const element = array[index];
+    for (let index = 0; index < array.length; index++) 
+    {const element = array[index];
+     if (Data=1) 
+     {
+       GetElementBy
+     } 
+     else 
+     {
+       Document
+     }
+    }
+  
+  }
+
+</script>
 </html>
