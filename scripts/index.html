@@ -1,18 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frost Tracker</title>
-  </head>
-  <body>
-    <h1>Frost Tracker</h1>
-    <h2>Temperature & Humidity</h2>
-    <h2>Air Quality</h2>
-    <p>This is the air quality field!</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Map thermique de vignoble</title>
+    <style>
+    img{
+                
+                border-radius:10px;
+                float:center;
+                margin-top: 10px;
+                margin-left: 5px;
+                object-fit: cover;
+            }
+    hr { 
+  display: block;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  }
+ 
+  h2{
+    float:center;
+    margin-top: 50px;
+            }
+  p{
+    margin-top : 800px;
+  }
 
+</style>
+</head>
+<body>
+
+  <a href="https://neverfrost8.wixsite.com/neverfrost">
+    <img src="images/logo.jpeg" alt="Logo NeverFrost" target="_blank" style="height:250px;position:absolute; left:10px; top:10px;"></a>
+    <img src="images/sloganimg.jpeg" alt="slogan NeverFrost" style="height:250px;position:absolute; left:270px; top:10px;"> 
+    <hr style="margin-top:290px">
+    <hr>
+    <h1>Affichage des données récoltées
+         par les capteurs de température et d'humidité en temps réel  </h1>
+         <h2>Carte thermique du vignoble</h2>
+         <!--Image du sol du vignoble -->
+         <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px; height:700px; z-index:1; opacity:0.75"></div>
+
+         <!--Capteurs -->
+         <!--Capteur position 1x1 -->
+         <div><img class="sensor" id="sensor11" src="images/sensor.jpeg"  style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 1x2 -->
+         <div><img class="sensor" id="sensor12" src="images/sensor.jpeg"  style="position:absolute; left:500px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 1x3 -->         
+         <div><img class="sensor" id="sensor13" src="images/sensor.jpeg"  style="position:absolute; left:850px; top: 580px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x1 --> 
+         <div><img class="sensor" id="sensor21" src="images/sensor.jpeg"  style="position:absolute; left:170px; top: 1000px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x2 --> 
+         <div><img class="sensor" id="sensor22" src="images/sensor.jpeg" style="position:absolute; left:500px; top: 1000px; height:100px; z-index:2"></div>
+         
+         <!--Capteur position 2x3 --> 
+         <div><img class="sensor" id="sensor23" src="images/sensor.jpeg" style="position:absolute; left:850px; top: 1000px; height:100px; z-index:2"></div>
+
+
+         <!--Sources de chaleur -->
+         <!--Sources de chaleur active pour capteur 1x1 -->
+         <div><img class="fire" id="fire11" src="images/fire.jpeg"  style="position:absolute; left:70px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire12" src="images/fire.jpeg" style="position:absolute; left:200px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire21" src="images/fire.jpeg" style="position:absolute; left:70px; top: 670px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire22" src="images/fire.jpeg" style="position:absolute; left:200px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x1 et/ou 1x2-->
+         <div><img class="fire" id="fire13" src="images/fire.jpeg"  style="position:absolute; left:350px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire23" src="images/fire.jpeg"  style="position:absolute; left:350px; top: 670px; height:70px; z-index:2"></div>
+
+         <!--Sources de chaleur active pour capteur 1x2--> 
+         <div><img class="fire" id="fire14" src="images/fire.jpeg"  style="position:absolute; left:530px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire24" src="images/fire.jpeg"style="position:absolute; left:530px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x2 et/ou 1x3-->
+         <div><img class="fire" id="fire15" src="images/fire.jpeg" style="position:absolute; left:700px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire25" src="images/fire.jpeg"  style="position:absolute; left:700px; top: 670px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 1x3-->
+         <div><img class="fire" id="fire16" src="images/fire.jpeg" style="position:absolute; left:870px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire26" src="images/fire.jpeg" style="position:absolute; left:870px; top: 670px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire17" src="images/fire.jpeg" style="position:absolute; left:1000px; top: 520px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire27" src="images/fire.jpeg" style="position:absolute; left:1000px; top: 670px; height:70px; z-index:2"></div>
+
+
+
+         <!--Sources de chaleur active pour capteur 2x1-->
+         <div><img class="fire" id="fire41" src="images/fire.jpeg" style="position:absolute; left:70px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire51" src="images/fire.jpeg" style="position:absolute; left:70px; top: 1080px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire42" src="images/fire.jpeg" style="position:absolute; left:200px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire52" src="images/fire.jpeg" style="position:absolute; left:200px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x1 et/ou 2x2-->
+         <div><img class="fire" id="fire43" src="images/fire.jpeg" style="position:absolute; left:350px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire53" src="images/fire.jpeg" style="position:absolute; left:350px; top: 1080px; height:70px; z-index:2"></div>         
+         
+         <!--Sources de chaleur active pour capteur 2x2-->
+         <div><img class="fire" id="fire44" src="images/fire.jpeg" style="position:absolute; left:530px; top: 950px; height:70px; z-index:2"></div>         
+         <div><img class="fire" id="fire54" src="images/fire.jpeg" style="position:absolute; left:530px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x2 et/ou 2x3-->
+         <div><img class="fire" id="fire45" src="images/fire.jpeg" style="position:absolute; left:700px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire55" src="images/fire.jpeg" style="position:absolute; left:700px; top: 1080px; height:70px; z-index:2"></div>
+         
+         <!--Sources de chaleur active pour capteur 2x3-->
+         <div><img class="fire" id="fire46" src="images/fire.jpeg" style="position:absolute; left:870px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire56" src="images/fire.jpeg" style="position:absolute; left:870px; top: 1080px; height:70px; z-index:2"></div>         
+         <div><img class="fire" id="fire47" src="images/fire.jpeg" style="position:absolute; left:1000px; top: 950px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire57" src="images/fire.jpeg" style="position:absolute; left:1000px; top: 1080px; height:70px; z-index:2"></div>
+         
+
+         <!--Sources de chaleur active pour capteurs 1x1 ET 2x1-->
+         <div><img class="fire" id="fire31" src="images/fire.jpeg" style="position:absolute; left:70px; top: 810px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire32" src="images/fire.jpeg" style="position:absolute; left:200px; top: 810px; height:70px; z-index:2"></div>         
+
+         <!--Sources de chaleur active pour capteurs (1x1 ET 2x1) et/ou (1x2 ET 2x2)-->
+         <div><img class="fire" id="fire33" src="images/fire.jpeg" style="position:absolute; left:350px; top: 810px; height:70px; z-index:2"></div>
+
+         <!--Sources de chaleur active pour capteurs 1x2 ET 2x2-->
+         <div><img class="fire" id="fire34" src="images/fire.jpeg" style="position:absolute; left:530px; top: 810px; height:70px; z-index:2"></div>
+
+         <!--Sources de chaleur active pour capteurs (1x2 ET 2x2) et/ou (1x3 ET 2x3)-->         
+         <div><img class="fire" id="fire35" src="images/fire.jpeg" style="position:absolute; left:700px; top: 810px; height:70px; z-index:2"></div>
+
+         <!--Sources de chaleur active pour capteurs 1x3 ET 2x3-->
+         <div><img class="fire" id="fire37" src="images/fire.jpeg" style="position:absolute; left:1000px; top: 810px; height:70px; z-index:2"></div>
+         <div><img class="fire" id="fire36" src="images/fire.jpeg" style="position:absolute; left:870px; top: 810px; height:70px; z-index:2"></div>
+
+         <p>Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
+     
+     
 <script>
   var ws = new WebSocket("ws://oreste:5678/"),
       messages = document.createElement('ul');
@@ -30,6 +156,199 @@
         }
       }
   };
-</script>
+capteur1=1;
+capteur2=0;
+capteur3=0;
+capteur4=0;
+capteur5=0;
+capteur6=1;
+// Condition capteur 1
+ if (capteur1==1) 
+     {
+       document.getElementById("sensor11").src="images/sensorb.jpeg";
+
+       document.getElementById("fire11").src="images/fire.jpeg"
+       document.getElementById("fire12").src="images/fire.jpeg"
+       document.getElementById("fire13").src="images/fire.jpeg"
+       document.getElementById("fire21").src="images/fire.jpeg"
+       document.getElementById("fire22").src="images/fire.jpeg"
+       document.getElementById("fire23").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor11").src="images/sensor.jpeg";
+
+       document.getElementById("fire11").src=""
+       document.getElementById("fire12").src=""
+       document.getElementById("fire13").src=""
+       document.getElementById("fire21").src=""
+       document.getElementById("fire22").src=""
+       document.getElementById("fire23").src=""
+     }
+
+//  Condition capteur 2
+     if (capteur2==1) 
+     {
+       document.getElementById("sensor12").src="images/sensorb.jpeg";
+
+       document.getElementById("fire13").src="images/fire.jpeg"
+       document.getElementById("fire14").src="images/fire.jpeg"
+       document.getElementById("fire15").src="images/fire.jpeg"
+       document.getElementById("fire23").src="images/fire.jpeg"
+       document.getElementById("fire24").src="images/fire.jpeg"
+       document.getElementById("fire25").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor12").src="images/sensor.jpeg";
+
+       document.getElementById("fire13").src=""
+       document.getElementById("fire14").src=""
+       document.getElementById("fire15").src=""
+       document.getElementById("fire23").src=""
+       document.getElementById("fire24").src=""
+       document.getElementById("fire25").src=""
+     }    
+
+// Condition capteur 3
+     if (capteur3==1) 
+     {
+       document.getElementById("sensor13").src="images/sensorb.jpeg";
+
+       document.getElementById("fire15").src="images/fire.jpeg"
+       document.getElementById("fire16").src="images/fire.jpeg"
+       document.getElementById("fire17").src="images/fire.jpeg"
+       document.getElementById("fire25").src="images/fire.jpeg"
+       document.getElementById("fire26").src="images/fire.jpeg"
+       document.getElementById("fire27").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor13").src="images/sensor.jpeg";
+
+       document.getElementById("fire15").src=""
+       document.getElementById("fire16").src=""
+       document.getElementById("fire17").src=""
+       document.getElementById("fire25").src=""
+       document.getElementById("fire26").src=""
+       document.getElementById("fire27").src=""
+     }
+
+     // Condition capteur 4
+ if (capteur4==1) 
+     {
+       document.getElementById("sensor21").src="images/sensorb.jpeg";
+
+       document.getElementById("fire41").src="images/fire.jpeg"
+       document.getElementById("fire42").src="images/fire.jpeg"
+       document.getElementById("fire43").src="images/fire.jpeg"
+       document.getElementById("fire51").src="images/fire.jpeg"
+       document.getElementById("fire52").src="images/fire.jpeg"
+       document.getElementById("fire53").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor21").src="images/sensor.jpeg";
+
+       document.getElementById("fire41").src=""
+       document.getElementById("fire42").src=""
+       document.getElementById("fire43").src=""
+       document.getElementById("fire51").src=""
+       document.getElementById("fire52").src=""
+       document.getElementById("fire53").src=""
+     }
+
+//  Condition capteur 5
+     if (capteur5==1) 
+     {
+       document.getElementById("sensor22").src="images/sensorb.jpeg";
+
+       document.getElementById("fire43").src="images/fire.jpeg"
+       document.getElementById("fire44").src="images/fire.jpeg"
+       document.getElementById("fire45").src="images/fire.jpeg"
+       document.getElementById("fire53").src="images/fire.jpeg"
+       document.getElementById("fire54").src="images/fire.jpeg"
+       document.getElementById("fire55").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor22").src="images/sensor.jpeg";
+
+       document.getElementById("fire43").src=""
+       document.getElementById("fire44").src=""
+       document.getElementById("fire45").src=""
+       document.getElementById("fire53").src=""
+       document.getElementById("fire54").src=""
+       document.getElementById("fire55").src=""
+     }    
+
+// Condition capteur 6
+     if (capteur6==1) 
+     {
+       document.getElementById("sensor23").src="images/sensorb.jpeg";
+
+       document.getElementById("fire45").src="images/fire.jpeg"
+       document.getElementById("fire46").src="images/fire.jpeg"
+       document.getElementById("fire47").src="images/fire.jpeg"
+       document.getElementById("fire55").src="images/fire.jpeg"
+       document.getElementById("fire56").src="images/fire.jpeg"
+       document.getElementById("fire57").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("sensor23").src="images/sensor.jpeg";
+
+       document.getElementById("fire45").src=""
+       document.getElementById("fire46").src=""
+       document.getElementById("fire47").src=""
+       document.getElementById("fire55").src=""
+       document.getElementById("fire56").src=""
+       document.getElementById("fire57").src=""
+     }
+
+// Conditions multiple : capteur 1 & 4
+if (capteur1==1 && capteur4==1) 
+     {
+       document.getElementById("fire31").src="images/fire.jpeg"
+       document.getElementById("fire32").src="images/fire.jpeg"
+       document.getElementById("fire33").src="images/fire.jpeg"
+     } 
+     else 
+     {
+       document.getElementById("fire31").src=""
+       document.getElementById("fire32").src=""
+       document.getElementById("fire33").src=""
+     }
+// Conditions multiple : capteur 2 & 5
+if (capteur2==1 && capteur5==1) 
+     {
+       document.getElementById("fire33").src="images/fire.jpeg"
+       document.getElementById("fire34").src="images/fire.jpeg"
+       document.getElementById("fire35").src="images/fire.jpeg"
+     } 
+     else 
+     {
+       document.getElementById("fire33").src=""
+       document.getElementById("fire34").src=""
+       document.getElementById("fire35").src=""
+     }
+
+// Conditions multiple : capteur 3 & 6
+if (capteur3==1 && capteur6==1) 
+     {
+       document.getElementById("fire35").src="images/fire.jpeg"
+       document.getElementById("fire36").src="images/fire.jpeg"
+       document.getElementById("fire37").src="images/fire.jpeg"
+     } 
+     else 
+     {
+       document.getElementById("fire35").src=""
+       document.getElementById("fire36").src=""
+       document.getElementById("fire37").src=""
+     }
+
+</script>  
+
+</body>
 
 </html>
