@@ -2,6 +2,15 @@
 
 DATA: list = []
 
+ree=[
+    [1,0,0],
+    [0,0,1],
+    ]
+
+DATA.append(ree)
+DATA.append(ree)
+DATA.append(ree)
+DATA.append(ree)
 #alerter = AlertSender()
 
 last_T=[
