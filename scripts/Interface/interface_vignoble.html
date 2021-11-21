@@ -140,12 +140,12 @@
      
      
 <script>
-capteur1=1;
+capteur1=0;
 capteur2=0;
 capteur3=0;
 capteur4=0;
 capteur5=0;
-capteur6=1;
+capteur6=0;
 // Condition capteur 1
  if (capteur1==1) 
      {
@@ -153,10 +153,8 @@ capteur6=1;
 
        document.getElementById("fire11").src="images/fire.jpeg"
        document.getElementById("fire12").src="images/fire.jpeg"
-       document.getElementById("fire13").src="images/fire.jpeg"
        document.getElementById("fire21").src="images/fire.jpeg"
        document.getElementById("fire22").src="images/fire.jpeg"
-       document.getElementById("fire23").src="images/fire.jpeg"
      } 
      else 
      {
@@ -164,10 +162,19 @@ capteur6=1;
 
        document.getElementById("fire11").src=""
        document.getElementById("fire12").src=""
-       document.getElementById("fire13").src=""
        document.getElementById("fire21").src=""
        document.getElementById("fire22").src=""
-       document.getElementById("fire23").src=""
+     }
+// Conditions multiple : capteur 1 OU 2
+if ((capteur1==1 || capteur2==1) || (capteur1==1 && capteur2==1))
+     {
+       document.getElementById("fire13").src="images/fire.jpeg"
+       document.getElementById("fire23").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("fire13").src=""
+      document.getElementById("fire23").src=""
      }
 
 //  Condition capteur 2
@@ -175,34 +182,36 @@ capteur6=1;
      {
        document.getElementById("sensor12").src="images/sensorb.jpeg";
 
-       document.getElementById("fire13").src="images/fire.jpeg"
        document.getElementById("fire14").src="images/fire.jpeg"
-       document.getElementById("fire15").src="images/fire.jpeg"
-       document.getElementById("fire23").src="images/fire.jpeg"
        document.getElementById("fire24").src="images/fire.jpeg"
-       document.getElementById("fire25").src="images/fire.jpeg"
      } 
      else 
      {
       document.getElementById("sensor12").src="images/sensor.jpeg";
 
-       document.getElementById("fire13").src=""
        document.getElementById("fire14").src=""
-       document.getElementById("fire15").src=""
-       document.getElementById("fire23").src=""
        document.getElementById("fire24").src=""
-       document.getElementById("fire25").src=""
-     }    
+     }  
+
+// Conditions multiple : capteur 2 OU 3
+if ((capteur2==1 || capteur3==1) || (capteur2==1 && capteur3==1))
+     {
+       document.getElementById("fire15").src="images/fire.jpeg"
+       document.getElementById("fire25").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("fire15").src=""
+      document.getElementById("fire25").src=""
+     }
 
 // Condition capteur 3
      if (capteur3==1) 
      {
        document.getElementById("sensor13").src="images/sensorb.jpeg";
 
-       document.getElementById("fire15").src="images/fire.jpeg"
        document.getElementById("fire16").src="images/fire.jpeg"
        document.getElementById("fire17").src="images/fire.jpeg"
-       document.getElementById("fire25").src="images/fire.jpeg"
        document.getElementById("fire26").src="images/fire.jpeg"
        document.getElementById("fire27").src="images/fire.jpeg"
      } 
@@ -210,10 +219,8 @@ capteur6=1;
      {
       document.getElementById("sensor13").src="images/sensor.jpeg";
 
-       document.getElementById("fire15").src=""
        document.getElementById("fire16").src=""
        document.getElementById("fire17").src=""
-       document.getElementById("fire25").src=""
        document.getElementById("fire26").src=""
        document.getElementById("fire27").src=""
      }
@@ -225,10 +232,8 @@ capteur6=1;
 
        document.getElementById("fire41").src="images/fire.jpeg"
        document.getElementById("fire42").src="images/fire.jpeg"
-       document.getElementById("fire43").src="images/fire.jpeg"
        document.getElementById("fire51").src="images/fire.jpeg"
        document.getElementById("fire52").src="images/fire.jpeg"
-       document.getElementById("fire53").src="images/fire.jpeg"
      } 
      else 
      {
@@ -236,10 +241,19 @@ capteur6=1;
 
        document.getElementById("fire41").src=""
        document.getElementById("fire42").src=""
-       document.getElementById("fire43").src=""
        document.getElementById("fire51").src=""
        document.getElementById("fire52").src=""
-       document.getElementById("fire53").src=""
+     }
+     // Conditions multiple : capteur 4 OU 5
+ if ((capteur4==1 || capteur5==1) || (capteur4==1 && capteur5==1))
+     {
+       document.getElementById("fire43").src="images/fire.jpeg"
+       document.getElementById("fire53").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("fire43").src=""
+      document.getElementById("fire53").src=""
      }
 
 //  Condition capteur 5
@@ -247,34 +261,36 @@ capteur6=1;
      {
        document.getElementById("sensor22").src="images/sensorb.jpeg";
 
-       document.getElementById("fire43").src="images/fire.jpeg"
        document.getElementById("fire44").src="images/fire.jpeg"
-       document.getElementById("fire45").src="images/fire.jpeg"
-       document.getElementById("fire53").src="images/fire.jpeg"
        document.getElementById("fire54").src="images/fire.jpeg"
-       document.getElementById("fire55").src="images/fire.jpeg"
      } 
      else 
      {
       document.getElementById("sensor22").src="images/sensor.jpeg";
 
-       document.getElementById("fire43").src=""
        document.getElementById("fire44").src=""
-       document.getElementById("fire45").src=""
-       document.getElementById("fire53").src=""
        document.getElementById("fire54").src=""
-       document.getElementById("fire55").src=""
-     }    
+     }  
+
+     // Conditions multiple : capteur 5 OU 6
+     if ((capteur5==1 || capteur6==1) || (capteur5==1 && capteur6==1))
+     {
+       document.getElementById("fire45").src="images/fire.jpeg"
+       document.getElementById("fire55").src="images/fire.jpeg"
+     } 
+     else 
+     {
+      document.getElementById("fire45").src=""
+      document.getElementById("fire55").src=""
+     }
 
 // Condition capteur 6
      if (capteur6==1) 
      {
        document.getElementById("sensor23").src="images/sensorb.jpeg";
 
-       document.getElementById("fire45").src="images/fire.jpeg"
        document.getElementById("fire46").src="images/fire.jpeg"
        document.getElementById("fire47").src="images/fire.jpeg"
-       document.getElementById("fire55").src="images/fire.jpeg"
        document.getElementById("fire56").src="images/fire.jpeg"
        document.getElementById("fire57").src="images/fire.jpeg"
      } 
@@ -282,51 +298,62 @@ capteur6=1;
      {
       document.getElementById("sensor23").src="images/sensor.jpeg";
 
-       document.getElementById("fire45").src=""
        document.getElementById("fire46").src=""
        document.getElementById("fire47").src=""
-       document.getElementById("fire55").src=""
        document.getElementById("fire56").src=""
        document.getElementById("fire57").src=""
      }
 
-// Conditions multiple : capteur 1 & 4
+ // Conditions multiple : capteur 1 & 4
 if (capteur1==1 && capteur4==1) 
      {
        document.getElementById("fire31").src="images/fire.jpeg"
        document.getElementById("fire32").src="images/fire.jpeg"
-       document.getElementById("fire33").src="images/fire.jpeg"
      } 
      else 
      {
        document.getElementById("fire31").src=""
        document.getElementById("fire32").src=""
-       document.getElementById("fire33").src=""
      }
-// Conditions multiple : capteur 2 & 5
-if (capteur2==1 && capteur5==1) 
+
+ // Conditions multiple : capteur 1 & 4 OU 2 & 5
+if ((capteur1==1 && capteur4==1) || (capteur2==1 && capteur5==1))
      {
        document.getElementById("fire33").src="images/fire.jpeg"
-       document.getElementById("fire34").src="images/fire.jpeg"
-       document.getElementById("fire35").src="images/fire.jpeg"
      } 
      else 
      {
        document.getElementById("fire33").src=""
+     }
+
+// Conditions multiple : capteur 2 & 5
+if (capteur2==1 && capteur5==1) 
+     {
+       document.getElementById("fire34").src="images/fire.jpeg"
+     } 
+     else 
+     {
        document.getElementById("fire34").src=""
+     }
+
+ // Conditions multiple : capteur 2 & 5 OU 3 & 6
+ if ((capteur2==1 && capteur5==1) || (capteur3==1 && capteur6==1))
+     {
+       document.getElementById("fire35").src="images/fire.jpeg"
+     } 
+     else 
+     {
        document.getElementById("fire35").src=""
      }
 
 // Conditions multiple : capteur 3 & 6
 if (capteur3==1 && capteur6==1) 
      {
-       document.getElementById("fire35").src="images/fire.jpeg"
        document.getElementById("fire36").src="images/fire.jpeg"
        document.getElementById("fire37").src="images/fire.jpeg"
      } 
      else 
      {
-       document.getElementById("fire35").src=""
        document.getElementById("fire36").src=""
        document.getElementById("fire37").src=""
      }
