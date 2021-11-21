@@ -4,7 +4,7 @@ import socketserver
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
-            self.path = '/scripts/index.html'
+            self.path = '/'
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 def web_server():
