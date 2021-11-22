@@ -9,10 +9,6 @@ if __name__ == "__main__":
     for thread in threads:
         thread.start()
     
-    print("test")
-    # alertSender = AlertSender()
-    # alertSender.sendAlert("Mikael")
-
     for thread in threads:
         thread.join()
     
