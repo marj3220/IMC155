@@ -140,39 +140,20 @@
      
      
 <script>
-  var capteur1, capteur2, capteur3, capteur4, capteur5, capteur6;
-  var ws = new WebSocket("ws://neverfrost.local:5678/");
-  ws.onmessage = function (event) {
-      var messages = document.getElementsByTagName('ul')[0],
-      message = document.createElement('li'),
-      data = JSON.parse(event.data);
-      console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        var data_line = data[i];
-        console.log(data[i]);
-        for (var j = 0; j < data_line.length; j++) {
-          console.log(j);
-          console.log(data_line[j]);
-        }
-      }
-      capteur1=data[0][0];
-      capteur2=data[0][1];
-      capteur3=data[0][2];
-      capteur4=data[1][0];
-      capteur5=data[1][1];
-      capteur6=data[1][2];
-      update_data();
-  };
-
-
-function update_data(){
-  fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]]
+fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]]
 sensor_state=[[1,0,0],[1,0,1]]
+m=5;
+n=7;
+s=2;
+t=3;
 
-m=fire_state.length;
-n=fire_state[0].length;
-s=sensor_state.length;
-t=sensor_state[0].length;
+
+      capteur1=0;
+      capteur2=0;
+      capteur3=0;
+      capteur4=0;
+      capteur5=0;
+      capteur6=0;
 
 for (i=0; i < s; i++) 
 {
@@ -180,7 +161,6 @@ for (i=0; i < s; i++)
     { 
         if (sensor_state[i][j] == 1)
         {
-
             name_id = "sensor"+i+j
             document.getElementById(name_id).src="images/sensorb.jpeg";
         }
@@ -198,7 +178,7 @@ for (i=0; i < m; i++)
         }
     }
 }
-}
+
 </script>  
 
 </body>
