@@ -1,6 +1,6 @@
 #from alert_sender import AlertSender
 
-DATA = []
+DATA = {}
 
 # ree=[
 #     [1,0,0],
@@ -58,7 +58,7 @@ for i in range(nb_strip):
                 for c in range(j_heat-1,j_heat+2):
                     heat[i_hc][c] = 1 
 
-DATA.append({"heat":heat, "T_state":T_state})
+DATA = {"heat":heat, "T_state":T_state}
 
 #display
 print('Nombre de bandes : ',nb_strip)
