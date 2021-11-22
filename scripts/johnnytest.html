@@ -140,20 +140,7 @@
      
      
 <script>
-  var fire_state, sensor_state;
-  var ws = new WebSocket("ws://oreste:5678/");
-  ws.onmessage = function (event) {
-      data = JSON.parse(event.data);
-      console.log(data);
-      sensor_state = data.T_state
-      console.log(sensor_state)
-      fire_state = data.heat
-      console.log(fire_state)
-      update_data();
-  };
 
-
-function update_data(){
   fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]]
 sensor_state=[[1,0,0],[1,0,1]]
 
@@ -197,7 +184,7 @@ for (i=0; i < m; i++)
         
     }
 }
-}
+
 
 </script>  
 
