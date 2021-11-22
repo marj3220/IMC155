@@ -6,33 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="...">
     <title>Map thermique de vignoble</title>
+    <link rel="icon" type="image/x-icon" href="/images/fire.jpeg">
     <style>
-    img{
-                
-                border-radius:10px;
-                float:center;
-                margin-top: 10px;
-                margin-left: 5px;
-                object-fit: cover;
-            }
+    img{               
+      border-radius:10px;
+      float:center;
+      margin-top: 10px;
+      margin-left: 5px;
+      object-fit: cover;
+      }
     hr { 
-  display: block;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
-  }
- 
+      display: block;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      border-style: inset;
+      border-width: 1px;
+    }
   h2{
     float:center;
     margin-top: 50px;
-            }
+  }
   p{
     margin-top : 800px;
   }
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -144,61 +142,53 @@
   var ws = new WebSocket("ws://oreste:5678/");
   ws.onmessage = function (event) {
       data = JSON.parse(event.data);
-      console.log(data);
-      sensor_state = data.T_state
-      console.log(sensor_state)
-      fire_state = data.heat
-      console.log(fire_state)
+      sensor_state = data.T_state;
+      fire_state = data.heat;
       update_data();
   };
 
 
 function update_data(){
-  fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]]
-sensor_state=[[1,0,0],[1,0,1]]
+  m=fire_state.length;
+  n=fire_state[0].length;
+  s=sensor_state.length;
+  t=sensor_state[0].length;
 
-m=fire_state.length;
-n=fire_state[0].length;
-s=sensor_state.length;
-t=sensor_state[0].length;
-
-for (i=0; i < s; i++) 
-{
+  //Sensor Loop
+  for (i=0; i < s; i++) 
+  {
     for (j = 0; j < t; j++) 
     { 
-        if (sensor_state[i][j] == 1)
-        {
-
-            name_id = "sensor"+i+j
-            document.getElementById(name_id).src="images/sensorb.jpeg";
-        }
-            else
-          {name_id = "sensor"+i+j
-            document.getElementById(name_id).src="images/sensor.jpeg";
-          }
-       
+      name_id = "sensor"+i+j;
+      if (sensor_state[i][j] == 1)
+      {            
+        document.getElementById(name_id).src="images/sensorb.jpeg";
+      }
+      else
+      {
+        document.getElementById(name_id).src="images/sensor.jpeg";
+      }
     }
-} 
+  } 
 
-for (i=0; i < m; i++) 
-{
+  //Fire Loop
+  for (i=0; i < m; i++) 
+  {
     for (j = 0; j < n; j++) 
-    { 
-        if (fire_state[i][j] == 0)
-        {
-            name_id = "fire"+i+j
-            document.getElementById(name_id).src="";
-        }
-            else
-          { 
-            name_id = "fire"+i+j
-            document.getElementById(name_id).src="images/fire.jpeg";
-          }
+    {
+      name_id = "fire"+i+j; 
+      if (fire_state[i][j] == 0)
+      {
+        document.getElementById(name_id).src="";
+      }
+      else
+      { 
+        document.getElementById(name_id).src="images/fire.jpeg";
+      }
         
     }
+  }
 }
-}
-
 </script>  
 
 </body>

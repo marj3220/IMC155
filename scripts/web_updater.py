@@ -9,11 +9,9 @@ async def update(websocket, path):
     """Coroutine that sends data through websocket"""
     while True:
         if DATA:
-            data = json.dumps(DATA.pop())
-            print("rree")
-            print(data)
+            data = json.dumps(DATA)
             await websocket.send(data)
-        await asyncio.sleep(5)
+        await asyncio.sleep(1)
 
 def web_updater():
     """Infinite loop that generates the WebSocket server"""
