@@ -44,6 +44,8 @@ for i in range(nb_strip):
             else:
                 i_heat = 3 * i
                 j_heat = 2 ** j + 1
+            T_state[i][j] = 1
+            heat[i_heat][j_heat] = 1
             print(i,j,i_heat,j_heat)
             for n in range(i_heat,i_heat+2): # sources de chaleur
                 for m in range(j_heat-1,j_heat+2):
@@ -55,8 +57,6 @@ for i in range(nb_strip):
                 i_hc = i_heat + 2
                 for c in range(j_heat-1,j_heat+2):
                     heat[i_hc][c] = 1 
-            T_state[i][j] = 1
-            heat[i_heat][j_heat] = 1
             #DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
 #display
 print('Nombre de bandes : ',nb_strip)
