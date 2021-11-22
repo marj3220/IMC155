@@ -32,6 +32,15 @@
     margin-top : 800px;
   }
 
+/* Bottom right text */
+.text-block {
+  background-color: black;
+  color: white;
+  opacity: 0.75;
+  padding-left: 15px;
+  padding-right: 0px;
+  z-index: 3;
+}
 </style>
 </head>
 <body>
@@ -44,9 +53,17 @@
     <h1>Affichage des données récoltées
          par les capteurs de température et d'humidité en temps réel  </h1>
          <h2>Carte thermique du vignoble</h2>
+
          <!--Image du sol du vignoble -->
          <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px; height:700px; z-index:1; opacity:0.75"></div>
-
+            <div class="text-block" style="position:absolute; left:200px; top: 600px; width:120px; height:120px; "> 
+              <h3>Température :</h3>
+              <p> X °C</p>
+              <h4>Humidité :</h4>
+              <p> X %</p>
+              <h4>Qualité de l'air :</h4>
+              <p> X </p>
+            </div>
          <!--Capteurs -->
          <!--Capteur position 1x1 -->
          <div><img class="sensor" id="sensor11" src="images/sensor.jpeg"  style="position:absolute; left:170px; top: 580px; height:100px; z-index:2"></div>
@@ -138,67 +155,263 @@
 
          <p>Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
      
-     
+
 <script>
-  var capteur1, capteur2, capteur3, capteur4, capteur5, capteur6;
-  var ws = new WebSocket("ws://neverfrost.local:5678/");
-  ws.onmessage = function (event) {
-      var messages = document.getElementsByTagName('ul')[0],
-      message = document.createElement('li'),
-      data = JSON.parse(event.data);
-      console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        var data_line = data[i];
-        console.log(data[i]);
-        for (var j = 0; j < data_line.length; j++) {
-          console.log(j);
-          console.log(data_line[j]);
-        }
+    
+      capteur1=0;
+      capteur2=0;
+      capteur3=0;
+      capteur4=0;
+      capteur5=0;
+      capteur6=0;
+
+      
+    
+
+
+  // Condition capteur 1
+  if (capteur1==1) 
+      {
+        document.getElementById("sensor11").src="images/sensorb.jpeg";
+      } 
+      else 
+        document.getElementById("fire11").src="images/fire.jpeg"
+        document.getElementById("fire12").src="images/fire.jpeg"
+        document.getElementById("fire21").src="images/fire.jpeg"
+        document.getElementById("fire22").src="images/fire.jpeg"
+      
+      {
+        document.getElementById("sensor11").src="images/sensor.jpeg";
+
+        document.getElementById("fire11").src=""
+        document.getElementById("fire12").src=""
+        document.getElementById("fire21").src=""
+        document.getElementById("fire22").src=""
       }
-      capteur1=data[0][0];
-      capteur2=data[0][1];
-      capteur3=data[0][2];
-      capteur4=data[1][0];
-      capteur5=data[1][1];
-      capteur6=data[1][2];
-      update_data();
-  };
+  // Conditions multiple : capteur 1 OU 2
+  if ((capteur1==1 || capteur2==1) || (capteur1==1 && capteur2==1))
+      {
+        document.getElementById("fire13").src="images/fire.jpeg"
+        document.getElementById("fire23").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire13").src=""
+        document.getElementById("fire23").src=""
+      }
 
+  //  Condition capteur 2
+      if (capteur2==1) 
+      {
+        document.getElementById("sensor12").src="images/sensorb.jpeg";
 
-function update_data(){
-  fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]]
-sensor_state=[[1,0,0],[1,0,1]]
+        document.getElementById("fire14").src="images/fire.jpeg"
+        document.getElementById("fire24").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("sensor12").src="images/sensor.jpeg";
 
-m=fire_state.length;
-n=fire_state[0].length;
-s=sensor_state.length;
-t=sensor_state[0].length;
+        document.getElementById("fire14").src=""
+        document.getElementById("fire24").src=""
+      }  
 
-for (i=0; i < s; i++) 
-{
-    for (j = 0; j < t; j++) 
-    { 
-        if (sensor_state[i][j] == 1)
-        {
+  // Conditions multiple : capteur 2 OU 3
+  if ((capteur2==1 || capteur3==1) || (capteur2==1 && capteur3==1))
+      {
+        document.getElementById("fire15").src="images/fire.jpeg"
+        document.getElementById("fire25").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire15").src=""
+        document.getElementById("fire25").src=""
+      }
 
-            name_id = "sensor"+i+j
-            document.getElementById(name_id).src="images/sensorb.jpeg";
-        }
+  // Condition capteur 3
+      if (capteur3==1) 
+      {
+        document.getElementById("sensor13").src="images/sensorb.jpeg";
+
+        document.getElementById("fire16").src="images/fire.jpeg"
+        document.getElementById("fire17").src="images/fire.jpeg"
+        document.getElementById("fire26").src="images/fire.jpeg"
+        document.getElementById("fire27").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("sensor13").src="images/sensor.jpeg";
+
+        document.getElementById("fire16").src=""
+        document.getElementById("fire17").src=""
+        document.getElementById("fire26").src=""
+        document.getElementById("fire27").src=""
+      }
+
+      // Condition capteur 4
+  if (capteur4==1) 
+      {
+        document.getElementById("sensor21").src="images/sensorb.jpeg";
+
+        document.getElementById("fire41").src="images/fire.jpeg"
+        document.getElementById("fire42").src="images/fire.jpeg"
+        document.getElementById("fire51").src="images/fire.jpeg"
+        document.getElementById("fire52").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("sensor21").src="images/sensor.jpeg";
+
+        document.getElementById("fire41").src=""
+        document.getElementById("fire42").src=""
+        document.getElementById("fire51").src=""
+        document.getElementById("fire52").src=""
+      }
+      // Conditions multiple : capteur 4 OU 5
+  if ((capteur4==1 || capteur5==1) || (capteur4==1 && capteur5==1))
+      {
+        document.getElementById("fire43").src="images/fire.jpeg"
+        document.getElementById("fire53").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire43").src=""
+        document.getElementById("fire53").src=""
+      }
+
+  //  Condition capteur 5
+      if (capteur5==1) 
+      {
+        document.getElementById("sensor22").src="images/sensorb.jpeg";
+
+        document.getElementById("fire44").src="images/fire.jpeg"
+        document.getElementById("fire54").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("sensor22").src="images/sensor.jpeg";
+
+        document.getElementById("fire44").src=""
+        document.getElementById("fire54").src=""
+      }  
+
+      // Conditions multiple : capteur 5 OU 6
+      if ((capteur5==1 || capteur6==1) || (capteur5==1 && capteur6==1))
+      {
+        document.getElementById("fire45").src="images/fire.jpeg"
+        document.getElementById("fire55").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire45").src=""
+        document.getElementById("fire55").src=""
+      }
+
+  // Condition capteur 6
+      if (capteur6==1) 
+      {
+        document.getElementById("sensor23").src="images/sensorb.jpeg";
+
+        document.getElementById("fire46").src="images/fire.jpeg"
+        document.getElementById("fire47").src="images/fire.jpeg"
+        document.getElementById("fire56").src="images/fire.jpeg"
+        document.getElementById("fire57").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("sensor23").src="images/sensor.jpeg";
+
+        document.getElementById("fire46").src=""
+        document.getElementById("fire47").src=""
+        document.getElementById("fire56").src=""
+        document.getElementById("fire57").src=""
+      }
+
+  // Conditions multiple : capteur 1 & 4
+  if (capteur1==1 && capteur4==1) 
+      {
+        document.getElementById("fire31").src="images/fire.jpeg"
+        document.getElementById("fire32").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire31").src=""
+        document.getElementById("fire32").src=""
+      }
+
+  // Conditions multiple : capteur 1 & 4 OU 2 & 5
+  if ((capteur1==1 && capteur4==1) || (capteur2==1 && capteur5==1))
+      {
+        document.getElementById("fire33").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire33").src=""
+      }
+
+  // Conditions multiple : capteur 2 & 5
+  if (capteur2==1 && capteur5==1) 
+      {
+        document.getElementById("fire34").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire34").src=""
+      }
+
+  // Conditions multiple : capteur 2 & 5 OU 3 & 6
+  if ((capteur2==1 && capteur5==1) || (capteur3==1 && capteur6==1))
+      {
+        document.getElementById("fire35").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire35").src=""
+      }
+
+  // Conditions multiple : capteur 3 & 6
+  if (capteur3==1 && capteur6==1) 
+      {
+        document.getElementById("fire36").src="images/fire.jpeg"
+        document.getElementById("fire37").src="images/fire.jpeg"
+      } 
+      else 
+      {
+        document.getElementById("fire36").src=""
+        document.getElementById("fire37").src=""
+      }
+
+     array.map(s=>s.id)
+      var result = objArray.map(function(a) {return a.feu;});
+      function getFields(input, field) {
+    var output = [];
+    for (var i=0; i < input.length ; ++i)
+        output.push(input[i][field]);
+    return output; 
     }
-} 
+var result = getFields(objArray, "feu"); // returns [ 1, 3, 5 ]
+//Getting One Value from an Array of Items or sum of array
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var total = numbers.reduce(function(total, current) {
+    return total + current;
+}, 0);
 
-for (i=0; i < m; i++) 
-{
-    for (j = 0; j < n; j++) 
-    { 
-        if (fire_state[i][j] == 0)
-        {
-            name_id = "fire"+i+j
-            document.getElementById(name_id).src="";
-        }
-    }
-}
-}
+console.log(total);
+
+//M = [{'id':'fire11','id':'fire12'}]
+
+   // M=matrix(("fire11","fire12"),2,1);
+    //F=matrix(1,0);
+    //for (let i = 0; i < F.length; i++) 
+    //{
+    //if (F[i]==1)
+   // {document.getElementById(M[]).src="images/fire.jpeg"}
+    //}
+    
+    //int[][]feu=new int[1][2];
+    //feu[0][0]="fire11"
+    //feu[0][1]="fire12"
+   // document.getElementById(feu[0][0]).src="images/fire.jpeg"
 </script>  
 
 </body>
