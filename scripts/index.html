@@ -37,15 +37,15 @@
 <body>
 
   <a href="https://neverfrost8.wixsite.com/neverfrost">
-    <img src="images/logo.jpeg" alt="Logo NeverFrost" target="_blank" style="height:250px;position:absolute; left:10px; top:10px;"></a>
-    <img src="images/sloganimg.jpeg" alt="slogan NeverFrost" style="height:250px;position:absolute; left:270px; top:10px;"> 
+    <img src="images/logo.jpeg" alt="Logo NeverFrost" target="_blank" style="height:250px; position:absolute; left:10px; top:10px;"></a>
+    <img src="images/sloganimg.jpeg" alt="slogan NeverFrost" style="height:250px; position:absolute; left:270px; top:10px;"> 
     <hr style="margin-top:290px">
     <hr>
     <h1>Affichage des données récoltées
          par les capteurs de température et d'humidité en temps réel  </h1>
          <h2>Carte thermique du vignoble</h2>
          <!--Image du sol du vignoble -->
-         <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px; height:700px; z-index:1; opacity:0.75"></div>
+         <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px;height:700px; width:1100px; z-index:1; opacity:0.75"></div>
 
          <!--Capteurs -->
          <!--Capteur position 1x1 -->
@@ -184,6 +184,11 @@ for (i=0; i < s; i++)
             name_id = "sensor"+i+j
             document.getElementById(name_id).src="images/sensorb.jpeg";
         }
+            else
+          {name_id = "sensor"+i+j
+            document.getElementById(name_id).src="images/sensor.jpeg";
+          }
+       
     }
 } 
 
@@ -196,9 +201,16 @@ for (i=0; i < m; i++)
             name_id = "fire"+i+j
             document.getElementById(name_id).src="";
         }
+            else
+          { 
+            name_id = "fire"+i+j
+            document.getElementById(name_id).src="images/fire.jpeg";
+          }
+        
     }
 }
 }
+
 </script>  
 
 </body>
