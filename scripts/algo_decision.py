@@ -1,16 +1,16 @@
 #from alert_sender import AlertSender
 
-DATA: list = []
+DATA = []
 
-ree=[
-    [1,0,0],
-    [0,0,1],
-    ]
+# ree=[
+#     [1,0,0],
+#     [0,0,1],
+#     ]
 
-DATA.append(ree)
-DATA.append(ree)
-DATA.append(ree)
-DATA.append(ree)
+# DATA.append(ree)
+# DATA.append(ree)
+# DATA.append(ree)
+# DATA.append(ree)
 #alerter = AlertSender()
 
 last_T=[
@@ -57,7 +57,9 @@ for i in range(nb_strip):
                 i_hc = i_heat + 2
                 for c in range(j_heat-1,j_heat+2):
                     heat[i_hc][c] = 1 
-            #DATA.append("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+
+DATA.append({"heat":heat, "T_state":T_state})
+
 #display
 print('Nombre de bandes : ',nb_strip)
 print('Nombre de capteurs par bandes :',nb_sensor)

@@ -140,27 +140,15 @@
      
      
 <script>
-  var capteur1, capteur2, capteur3, capteur4, capteur5, capteur6;
-  var ws = new WebSocket("ws://neverfrost.local:5678/");
+  var fire_state, sensor_state;
+  var ws = new WebSocket("ws://oreste:5678/");
   ws.onmessage = function (event) {
-      var messages = document.getElementsByTagName('ul')[0],
-      message = document.createElement('li'),
       data = JSON.parse(event.data);
       console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        var data_line = data[i];
-        console.log(data[i]);
-        for (var j = 0; j < data_line.length; j++) {
-          console.log(j);
-          console.log(data_line[j]);
-        }
-      }
-      capteur1=data[0][0];
-      capteur2=data[0][1];
-      capteur3=data[0][2];
-      capteur4=data[1][0];
-      capteur5=data[1][1];
-      capteur6=data[1][2];
+      sensor_state = data.T_state
+      console.log(sensor_state)
+      fire_state = data.heat
+      console.log(fire_state)
       update_data();
   };
 
