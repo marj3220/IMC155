@@ -55,7 +55,7 @@
 //document.getElementById("sensor00").src="images/sensorb.jpeg";
 //console.log(test)
 
-fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 1, 1, 1],[1, 1, 1, 0, 1, 1, 1]];
+fire_state=[[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1]];
 sensor_state=[[1,0,0],[1,0,1]];
 
 m=fire_state.length;
@@ -64,8 +64,8 @@ s=sensor_state.length;
 t=sensor_state[0].length;
 
 // def des img des capteurs
-sensor_l0 = 170; sensor_top = 580;
-dlpx_sensor = 330; dtpx_sensor = 420;
+sensor_l0 = 193; sensor_top = 580;
+dlpx_sensor = 2*160; dtpx_sensor = 420;
 
 for (i = 0; i < s; i++)
 {
@@ -81,12 +81,13 @@ for (i = 0; i < s; i++)
     img_sensor.setAttribute("src","images/sensorw.jpeg");
     div_sensor.appendChild(img_sensor);
     document.body.insertBefore(div_sensor, document.getElementById(sensor_id));
+    console.log(sensor_left);
     sensor_left = sensor_left + dlpx_sensor;
   }
   sensor_top = sensor_top + dtpx_sensor;
 }
 // def des img des feux
-fire_l0 = 40; fire_top = 520; // 870 doit être à 860 pour avant dernière rangée
+fire_l0 = 60; fire_top = 520; // 870 doit être à 860 pour avant dernière rangée
 dlpx_fire = 160; dtpx_fire = 150; // ajustement nécéssaire
 counti = 0; countj = 0;
 
