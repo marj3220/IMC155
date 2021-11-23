@@ -28,8 +28,18 @@
     float:center;
     margin-top: 50px;
             }
+            .text-block {
+  position: absolute;
+  z-index:3;
+  opacity: 0.8;
+  background-color: rgb(0, 0, 0,1);
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  }
   p{
-    margin-top : 800px;
+      font-weight: bold;
   }
 
 </style>
@@ -47,7 +57,32 @@
          <!--Image du sol du vignoble -->
          <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px;height:700px; width:1100px; z-index:1; opacity:0.75"></div>
         
-         <p>Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
+         <!--bloc display température 1 --> 
+        <div class="text-block" id="temp00" style="top:610px; left: 285px;">
+          <p>X °C</p>
+          </div>
+          <!--bloc display température 2 --> 
+          <div class="text-block" id="temp01" style="top:610px; left: 615px;">
+             <p>X °C</p>
+             </div>
+             <!--bloc display température 3 --> 
+          <div class="text-block" id="temp02" style="top:610px; left: 945px;">
+             <p>X °C</p>
+             </div>
+             <!--bloc display température 4 --> 
+          <div class="text-block" id="temp10" style="top:1030px; left: 285px;">
+             <p>X °C</p>
+             </div>
+             <!--bloc display température 5 --> 
+          <div class="text-block" id="temp11" style="top:1030px; left: 615px;">
+             <p>X °C</p>
+             </div>
+             <!--bloc display température 6 --> 
+          <div class="text-block" id="temp12" style="top:1030px; left: 945px;">
+             <p>X °C</p>
+             </div>
+
+         <p style="margin-top : 800px;">Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
      
      
 <script>
@@ -66,6 +101,9 @@ t=sensor_state[0].length;
 // def des img des capteurs
 sensor_l0 = 193; sensor_top = 580;
 dlpx_sensor = 2*160; dtpx_sensor = 420;
+
+temp_l0 = 285; temp_top = 610;
+dlpx_temp = dlpx_sensor; dtpx_temp = dtpx_sensor;
 
 for (i = 0; i < s; i++)
 {
@@ -86,6 +124,27 @@ for (i = 0; i < s; i++)
   }
   sensor_top = sensor_top + dtpx_sensor;
 }
+
+// def des bloc message des capteurs
+temp_l0 = 285; temp_top = 610;
+dlpx_temp = dlpx_sensor; dtpx_temp = dtpx_sensor;
+
+for (i = 0; i < s; i++)
+{
+  temp_left = temp_l0
+  for (j = 0; j < t; j++)
+  {
+    imstyle_1 = "position:absolute; left:" + temp_left + "px; top: " + temp_top + "px; z-index:3"
+    console.log(imstyle_1)
+    temp_id = "temp" + i + j
+    console.log(temp_id)
+    // <div><img class="sensor" id="sensor_id"  style="imstyle"></div>
+    temp_left = temp_left + dlpx_temp
+  }
+  temp_top = temp_top + dtpx_temp
+}
+
+
 // def des img des feux
 fire_l0 = 60; fire_top = 520; // 870 doit être à 860 pour avant dernière rangée
 dlpx_fire = 160; dtpx_fire = 150; // ajustement nécéssaire
