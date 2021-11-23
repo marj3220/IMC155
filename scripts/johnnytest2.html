@@ -33,10 +33,14 @@
   position: absolute;
   z-index:3;
   opacity: 0.8;
-  background-color: black;
+  background-color: rgb(0, 0, 0,1);
   color: white;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 10px;
+  }
+  p{
+      font-weight: bold;
   }
 
 </style>
@@ -57,27 +61,27 @@
          
          <!--bloc display température 1 --> 
          <div class="text-block" id="temp00" style="top:610px; left: 285px;">
-         <p>Température : X °C</p>
+         <p>X °C</p>
          </div>
          <!--bloc display température 2 --> 
          <div class="text-block" id="temp01" style="top:610px; left: 615px;">
-            <p>Température : X °C</p>
+            <p>X °C</p>
             </div>
             <!--bloc display température 3 --> 
          <div class="text-block" id="temp02" style="top:610px; left: 945px;">
-            <p>Température : X °C</p>
+            <p>X °C</p>
             </div>
             <!--bloc display température 4 --> 
          <div class="text-block" id="temp10" style="top:1030px; left: 285px;">
-            <p>Température : X °C</p>
+            <p>X °C</p>
             </div>
             <!--bloc display température 5 --> 
          <div class="text-block" id="temp11" style="top:1030px; left: 615px;">
-            <p>Température : X °C</p>
+            <p>X °C</p>
             </div>
             <!--bloc display température 6 --> 
          <div class="text-block" id="temp12" style="top:1030px; left: 945px;">
-            <p>Température : X °C</p>
+            <p>X °C</p>
             </div>
 
 
@@ -177,6 +181,7 @@
 
 fire_state=[[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 0, 0, 0, 0],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1]]
 sensor_state=[[1,0,0],[1,1,1]]
+T =[[5,0,0],[1,3,1]]
 
 m=fire_state.length;
 n=fire_state[0].length;
@@ -241,6 +246,7 @@ for (i = 0; i < m; i++)
 }
 
 // Affichage des img des sensors
+
 for (i=0; i < s; i++) 
 {
     for (j = 0; j < t; j++) 
@@ -254,7 +260,8 @@ for (i=0; i < s; i++)
           { name_id = "sensor"+i+j
             document.getElementById(name_id).src="images/sensorw.png";
           }
-        
+        temperature = T[i][j] + "°C"
+        console.log(temperature)
     }
 } 
 
