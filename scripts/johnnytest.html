@@ -149,7 +149,39 @@ n=fire_state[0].length;
 s=sensor_state.length;
 t=sensor_state[0].length;
 
-// Boucles pour definir les id
+// def des img des capteurs
+sensor_l0 = 170; sensor_top = 580;
+dlpx_sensor = 330; dtpx_sensor = 150;
+for (i = 0; i < s; i++)
+{
+  sensor_left = sensor_l0
+  for (j = 0; j < t; j++)
+  {
+    imstyle = "position:absolute; left:" + sensor_left + "px; top: " + sensor_top + "px; height:100px; z-index:2"
+    console.log(imstyle)
+    sensor_id = "sensor" + i + j
+    console.log(sensor_id)
+    //<div><img class="sensor" id="sensor_id"  style="imstyle"></div>
+    sensor_left = sensor_left + dlpx_sensor
+  }
+  sensor_top = sensor_top + dtpx_sensor
+}
+// def des img des feux
+fire_l0 = 70; fire_top = 520;
+dlpx_fire = 150; dtpx_fire = 150; // ajustement nécéssaire
+for (i = 0; i < m; i++)
+{
+  fire_left = fire_l0
+  for (j = 0; j < n; j++)
+  {
+    imstyle = "position:absolute; left:" + fire_left + "px; top: " + fire_top + "px; height:70px; z-index:2"
+    fire_id = "fire" + i + j
+    console.log(imstyle); console.log(fire_id)
+    //<div><img class="fire" id=fire_id src="images/fire.jpeg" style=imstyle></div>
+    fire_left = fire_left + dlpx_fire
+  }
+  fire_top = fire_top + dtpx_fire
+}
 
 for (i=0; i < s; i++) 
 {
