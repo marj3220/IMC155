@@ -20,15 +20,14 @@ def readSensorSlave(i,j):
 def receiveFromSlave(i,j):
     temperature = 0.00
     dataString = ""
-    block = 0
     try:
         block = bus.read_i2c_block_data(slave[i],j,7)
+        time.sleep(0.2)
+        for c in range(len(block)):
+            dataString = dataString + chr(block[c])
+        temperature = float(dataString)
     except IOError:
-        pass
-    time.sleep(0.2)
-    for c in range(len(block)):
-        dataString = dataString + chr(block[c])
-    temperature = float(dataString)
+        temperature = None
     return temperature
 
 def pi_arduino_communicator():
@@ -38,7 +37,8 @@ def pi_arduino_communicator():
             for j in range(nb_sensors):
                 #readSensorSlave(i,j)
                 time.sleep(0.25)
-                temperature_matrix[i][j] = receiveFromSlave(i,j)
+                if (receiveFromSlave(i,j)):
+                    temperature_matrix[i][j] = receiveFromSlave(i,j)
         k = 0
         for i in range(2):
             for j in range(2):
