@@ -6,7 +6,7 @@ def compute_data(temp_matrix):
     T = temp_matrix
     nb_strip = len(T) # nombre de strip de capteur
     nb_sensor = len(T[0]) # nombre de capteur par strip
-    T_seuil = 3 # Température de seuil (si plus bas = alerte)
+    T_seuil = 24 # Température de seuil (si plus bas = alerte)
     # Flag sur les températures basses 
     T_state = [[0 for i in range(nb_sensor)] for j in range(nb_strip)]
     heat = [[0 for i in range(2*nb_sensor+1)] for j in range(3*nb_strip-1)]

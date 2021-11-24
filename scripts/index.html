@@ -41,7 +41,7 @@
 
 </style>
 </head>
-<body>
+<body onload="init_view()">
 
   <a href="https://neverfrost8.wixsite.com/neverfrost">
     <img src="images/logo.png" alt="Logo NeverFrost" target="_blank" style="height:250px; position:absolute; left:10px; top:10px;margin-top: 20px;"></a>
@@ -58,26 +58,22 @@
      
 <script>
   var fire_state, sensor_state;
-  var counter = 0;
   var ws = new WebSocket("ws://neverfrost.local:5678/");
   ws.onmessage = function (event) {
       data = JSON.parse(event.data);
       sensor_state = data.T_state;
       fire_state = data.heat;
+      console.log(fire_state);
       temp = data.T;
-      if (counter == 0) {
-        init_view()
-        counter = 1;
-      }
       update_data();
   };
 
 
   function init_view() {
-    m=fire_state.length;
-    n=fire_state[0].length;
-    s=sensor_state.length;
-    t=sensor_state[0].length;
+    m=5;
+    n=7;
+    s=2;
+    t=3;
 
     // def des img des capteurs
     sensor_l0 = 193; sensor_top = 580;
