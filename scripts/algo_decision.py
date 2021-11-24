@@ -18,8 +18,8 @@ last_T=[
     [5,5,5]
     ]
 T=[
-    [3,5,5],
-    [3,5,3],
+    [3,2.1,5],
+    [3.5,0.6,4],
     ]
 nb_strip = len(T) # nombre de strip de capteur
 nb_sensor = len(T[0]) # nombre de capteur par strip
