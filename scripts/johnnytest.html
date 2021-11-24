@@ -66,31 +66,6 @@
          <h2>Carte thermique du vignoble</h2><br><p></p></br>
          <!--Image du sol du vignoble -->
          <div><img src="images/gnd4.jpeg" alt="ground" style="position:absolute; left:20px; top: 500px;height:700px; width:1100px; z-index:1; opacity:0.75"></div>
-        
-         <!--bloc display température 1 --> 
-        <div class="text-block">
-          <!--<p>X °C</p>-->
-          </div>
-          <!--bloc display température 2 --> 
-          <div class="text-block" id="temp01" style="top:610px; left: 625px;">
-             <p>X °C</p>
-             </div>
-             <!--bloc display température 3 --> 
-          <div class="text-block" id="temp02" style="top:610px; left: 945px;">
-             <p>X °C</p>
-             </div>
-             <!--bloc display température 4 --> 
-          <div class="text-block" id="temp10" style="top:1030px; left: 305px;">
-             <p>X °C</p>
-             </div>
-             <!--bloc display température 5 --> 
-          <div class="text-block" id="temp11" style="top:1030px; left: 625px;">
-             <p>X °C</p>
-             </div>
-             <!--bloc display température 6 --> 
-          <div class="text-block" id="temp12" style="top:1030px; left: 945px;">
-             <p>X °C</p>
-             </div>
 
          <p style="margin-top : 800px;font-weight: normal;">Note : Il est important de positionner les sources de chaleur aux emplacements indiqués afin de maximiser les performances de votre système de chauffage.</p>
     
@@ -99,9 +74,14 @@
 
 
 
-fire_state=[[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1]];
-sensor_state=[[1,0,0],[1,0,1]];
-Temp=[[1,0.5,-2],[1,0,1.5]];
+fire_state=[[1, 1, 1, 1, 1, 0, 0],
+[1, 1, 1, 1, 1, 0, 0],
+[0, 0, 1, 1, 1, 0, 0],
+[0, 0, 1, 1, 1, 0, 0],
+[0, 0, 1, 1, 1, 0, 0]];
+sensor_state=[[1,1,0],[0,1,0]];
+Temp=[[3, 2.1, 5],
+[3.5, 0.6, 4]];
 
 m=fire_state.length;
 n=fire_state[0].length;
@@ -145,14 +125,14 @@ for (i = 0; i < s; i++)
   for (j = 0; j < t; j++)
   {
     imstyle_1 = "position:absolute; left:" + temp_left + "px; top: " + temp_top + "px; z-index:3" + text_style0;
-    new_temp_id = "temp" + i + j
+    new_temp_id = "temp" + i + j;
     var div_temp = document.createElement("div");
     var para = document.createElement("p");
-    var text = document.createTextNode("X °C")
-    temp_id = div_temp.setAttribute("id",new_temp_id);
+    var text_temp = document.createTextNode("X °C")
+    temp_id = para.setAttribute("id",new_temp_id);
     div_temp.setAttribute("style",imstyle_1);
     para.setAttribute("style", para_style);
-    para.appendChild(text);
+    para.appendChild(text_temp);
     div_temp.appendChild(para);
     document.body.insertBefore(div_temp, document.getElementById(temp_id));
  
@@ -202,18 +182,18 @@ for (i=0; i < s; i++)
     { 
         if (sensor_state[i][j] == 1)
         {
-
             name_id = "sensor"+i+j
             document.getElementById(name_id).src="images/sensorb.jpeg";
         }
             else
-          {name_id = "sensor"+i+j
+          {
+            name_id = "sensor"+i+j
             document.getElementById(name_id).src="images/sensorw.png";
           }
           live_temp = Temp[i][j] + "°C";
           console.log(live_temp);
-          document.getElementById(temp_id).text(live_temp);
-       
+          cur_temp_id = "temp" + i + j;
+          document.getElementById(cur_temp_id).innerText = live_temp;
     }
 } 
 
