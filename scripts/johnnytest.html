@@ -87,8 +87,7 @@
      
 <script>
 
-//document.getElementById("sensor00").src="images/sensorb.jpeg";
-//console.log(test)
+
 
 fire_state=[[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1]];
 sensor_state=[[1,0,0],[1,0,1]];
@@ -101,9 +100,6 @@ t=sensor_state[0].length;
 // def des img des capteurs
 sensor_l0 = 193; sensor_top = 580;
 dlpx_sensor = 2*160; dtpx_sensor = 420;
-
-temp_l0 = 285; temp_top = 610;
-dlpx_temp = dlpx_sensor; dtpx_temp = dtpx_sensor;
 
 for (i = 0; i < s; i++)
 {
@@ -138,7 +134,6 @@ for (i = 0; i < s; i++)
     console.log(imstyle_1)
     temp_id = "temp" + i + j
     console.log(temp_id)
-    // <div><img class="sensor" id="sensor_id"  style="imstyle"></div>
     temp_left = temp_left + dlpx_temp
   }
   temp_top = temp_top + dtpx_temp
