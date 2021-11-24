@@ -1,5 +1,6 @@
 import time
 import struct
+from scripts.algo_decision import compute_data
 from smbus import SMBus
 
 slave = [0x08]               # array of slave addresses
@@ -25,49 +26,15 @@ def receiveFromSlave(i,j):
     temperature = float(dataString)
     return temperature
 
-while True:
-    for i in range(nb_slaves):
-        print("Asking for data")
-        for j in range(nb_sensors):
-            #readSensorSlave(i,j)
-            time.sleep(0.1)
-            temperature_matrix[i][j] = receiveFromSlave(i,j)
-    print(temperature_matrix)
-    print()    
-    time.sleep(3)
-
-"""
-def readSensorSlave(i,j):
-    print("writing to slave: ",j)
-    #bus = SMBus(1)
-    bus.write_byte(slave[i],j)
-    #bus.close()
-    return
-
-def receiveFromSlave(i):
-    print("receiving from slave")
-    temperature = 0.00
-    dataString = ""
-    #bus = SMBus(1)
-    block = bus.read_i2c_block_data(slave[i],0,7)
-    for c in range(len(block)):
-        dataString = dataString + chr(block[c])
-    #bus.close()
-    temperature = float(dataString)
-    return temperature
-
-
-while True:
-    for i in range(nb_slaves):
-        print("Asking for data")
-        for j in range(nb_sensors):
-            readSensorSlave(i,j)
-            time.sleep(0.1)
-            temperature_matrix[i][j] = receiveFromSlave(i)
-            #print(temperature_matrix[i][j])
-    print(temperature_matrix)
-    print()
-    time.sleep(4)
-"""
-
-
+def pi_arduino_communicator():
+    while True:
+        for i in range(nb_slaves):
+            print("Asking for data")
+            for j in range(nb_sensors):
+                #readSensorSlave(i,j)
+                time.sleep(0.1)
+                temperature_matrix[i][j] = receiveFromSlave(i,j)
+        print(temperature_matrix)
+        print()    
+        compute_data(temperature_matrix)
+        time.sleep(3)
