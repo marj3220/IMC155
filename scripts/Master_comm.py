@@ -20,7 +20,11 @@ def readSensorSlave(i,j):
 def receiveFromSlave(i,j):
     temperature = 0.00
     dataString = ""
-    block = bus.read_i2c_block_data(slave[i],j,7)
+    block = 0
+    try:
+        block = bus.read_i2c_block_data(slave[i],j,7)
+    except IOError:
+        pass
     time.sleep(0.2)
     for c in range(len(block)):
         dataString = dataString + chr(block[c])
