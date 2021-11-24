@@ -58,7 +58,7 @@ for i in range(nb_strip):
                 for c in range(j_heat-1,j_heat+2):
                     heat[i_hc][c] = 1 
 
-DATA = {"heat":heat, "T_state":T_state}
+DATA = {"heat":heat, "T_state":T_state, "T":T}
 
 #display
 print('Nombre de bandes : ',nb_strip)
