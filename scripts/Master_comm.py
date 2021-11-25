@@ -38,8 +38,9 @@ def pi_arduino_communicator():
             for j in range(nb_sensors):
                 #readSensorSlave(i,j)
                 time.sleep(0.25)
-                if (receiveFromSlave(i,j)):
-                    temperature_matrix[i][j] = receiveFromSlave(i,j)
+                temp = receiveFromSlave(i,j)
+                if (temp != None):
+                    temperature_matrix[i][j] = temp
         k = 0
         for i in range(2):
             for j in range(2):
