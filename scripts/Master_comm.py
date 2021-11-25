@@ -2,6 +2,9 @@ import time
 import struct
 from algo_decision import compute_data
 from smbus import SMBus
+import asyncio
+import websockets
+import json
 
 slave = [0x08]               # array of slave addresses
 nb_slaves = len(slave)      # amount of slave devices
@@ -28,9 +31,10 @@ def receiveFromSlave(i,j):
         temperature = float(dataString)
     except IOError:
         temperature = None
+        time.sleep(0.5)
     return temperature
 
-def pi_arduino_communicator():
+async def pi_arduino_communicator(websocket, path):
     while True:
         for i in range(nb_slaves):
             #print("Asking for data")
@@ -48,5 +52,12 @@ def pi_arduino_communicator():
         print(cadeau)
         print()    
         data = compute_data(cadeau)
-        yield data
+        try: 
+            data_to_send = json.dumps(data)
+            print("ree")
+            print(data_to_send)
+            await websocket.send(data_to_send)
+        except StopIteration:
+            pass
+        await asyncio.sleep(1)
         time.sleep(3)
