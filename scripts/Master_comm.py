@@ -44,6 +44,7 @@ async def pi_arduino_communicator(websocket, path):
                 temp = receiveFromSlave(i,j)
                 if (temp != None):
                     temperature_matrix[i][j] = temp
+        print(temperature_matrix)
         k = 0
         for i in range(2):
             for j in range(3):
