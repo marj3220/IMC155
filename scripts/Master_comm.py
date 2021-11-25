@@ -2,8 +2,8 @@ import time
 import struct
 from algo_decision import compute_data
 from smbus import SMBus
+from web_updater import DATA
 
-DATA = {}
 slave = [0x08]               # array of slave addresses
 nb_slaves = len(slave)      # amount of slave devices
 nb_sensors = 4              # amount of sensors per slave device

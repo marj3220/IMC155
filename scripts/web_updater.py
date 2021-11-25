@@ -2,12 +2,15 @@
 
 import asyncio
 import websockets
-from Master_comm import DATA
 import json
+
+DATA = {}
 
 async def update(websocket, path):
     """Coroutine that sends data through websocket"""
     while True:
+        print("In true")
+        print(DATA)
         if DATA:
             data = json.dumps(DATA)
             print("ree")
