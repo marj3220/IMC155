@@ -17,7 +17,6 @@ class DecisionTaker():
         heat = [[0 for i in range(2*nb_sensor+1)] for j in range(3*nb_strip-1)]
         for i in range(nb_strip):
             for j in range(nb_sensor):
-                print(self.last_T)
                 if T[i][j] <= T_seuil: # dans ce cas, valeur = 1 sinon reste 0
                     if self.last_T[i][j] > T_seuil: # notification par textos
                         print("test2")
@@ -47,7 +46,7 @@ class DecisionTaker():
                         i_hc = i_heat + 2
                         for c in range(j_heat-1,j_heat+2):
                             heat[i_hc][c] = 1 
-        self.last_T = T
+        
         
 
         #display
@@ -67,4 +66,5 @@ class DecisionTaker():
         print('États des sources de chaleurs :')
         for i in range(len(heat)):
             print(heat[i])
+        self.last_T = T
         return {"heat":heat, "T_state":T_state, "T":T}
