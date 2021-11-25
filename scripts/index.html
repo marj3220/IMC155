@@ -60,6 +60,7 @@
   var fire_state, sensor_state;
   var ws = new WebSocket("ws://neverfrost.local:5678/");
   ws.onmessage = function (event) {
+      console.log("FUCK ME")
       data = JSON.parse(event.data);
       sensor_state = data.T_state;
       fire_state = data.heat;
