@@ -49,4 +49,5 @@ def pi_arduino_communicator():
         print()    
         global DATA
         DATA = compute_data(cadeau)
+        print(DATA)
         time.sleep(3)
