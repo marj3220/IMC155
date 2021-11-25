@@ -18,7 +18,9 @@ class DecisionTaker():
         for i in range(nb_strip):
             for j in range(nb_sensor):
                 if T[i][j] <= T_seuil: # dans ce cas, valeur = 1 sinon reste 0
+                    print("test1")
                     if self.last_T[i][j] > T_seuil: # notification par textos
+                        print("test2")
                         self.alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
                     if i == 0 and j == 0:
                         i_heat = i
