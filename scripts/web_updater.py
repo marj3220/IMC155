@@ -2,7 +2,7 @@
 
 import asyncio
 import websockets
-from algo_decision import DATA
+from Master_comm import DATA
 import json
 
 async def update(websocket, path):
@@ -10,6 +10,7 @@ async def update(websocket, path):
     while True:
         if DATA:
             data = json.dumps(DATA)
+            print("ree")
             print(data)
             await websocket.send(data)
         await asyncio.sleep(1)
