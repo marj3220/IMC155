@@ -2,8 +2,6 @@ from alert_sender import AlertSender
 
 class DecisionTaker():
     def __init__(self) -> None:
-        self.last_T = [ [-999, -999, -999],
-                        [-999, -999, -999] ]
         self.alreadySent = [    [False, False, False],
                                 [False, False, False] ]
         self.alerter = AlertSender()
@@ -22,8 +20,7 @@ class DecisionTaker():
                 if T[i][j] <= T_seuil: # dans ce cas, valeur = 1 sinon reste 0
                     if self.alreadySent[i][j] == False: # notification par textos
                         self.alreadySent[i][j] = True
-                        print("FUCK")
-                        self.alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
+                        #self.alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
                     if i == 0 and j == 0:
                         i_heat = i
                         j_heat = j + 1
@@ -51,26 +48,4 @@ class DecisionTaker():
                             heat[i_hc][c] = 1 
                 else:
                     self.alreadySent[i][j] = False
-
-        
-        
-
-        #display
-        print('Nombre de bandes : ',nb_strip)
-        print('Nombre de capteurs par bandes :',nb_sensor)
-        print('map = ',len(heat),'x',len(heat[0]))
-        print('Anciennes températures')
-        for i in range(len(self.last_T)):
-            print(self.last_T[i])
-        print('Nouvelles températures :')
-        for i in range(nb_strip):
-            print(T[i])
-        print('Seuil de température :',T_seuil,'Celsius')
-        print('États des capteurs de température :')
-        for i in range(nb_strip):
-            print(T_state[i])
-        print('États des sources de chaleurs :')
-        for i in range(len(heat)):
-            print(heat[i])
-        self.last_T = T
         return {"heat":heat, "T_state":T_state, "T":T}
