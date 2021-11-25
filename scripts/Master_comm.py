@@ -52,4 +52,3 @@ async def pi_arduino_communicator(websocket, path):
         except StopIteration:
             pass
         await asyncio.sleep(1)
-        time.sleep(3)
