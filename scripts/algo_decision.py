@@ -35,7 +35,6 @@ class DecisionTaker():
                         j_heat = 2 ** j + 1
                     T_state[i][j] = 1
                     heat[i_heat][j_heat] = 1
-                    print(i,j,i_heat,j_heat)
                     for n in range(i_heat,i_heat+2): # sources de chaleur
                         for m in range(j_heat-1,j_heat+2):
                             if n == i_heat and m == j_heat:
