@@ -4,6 +4,8 @@ class DecisionTaker():
     def __init__(self) -> None:
         self.last_T = [ [-999, -999, -999],
                         [-999, -999, -999] ]
+        self.alreadySent = [    [False, False, False],
+                                [False, False, False] ]
         self.alerter = AlertSender()
 
     def compute_data(self, temp_matrix):
@@ -18,8 +20,9 @@ class DecisionTaker():
         for i in range(nb_strip):
             for j in range(nb_sensor):
                 if T[i][j] <= T_seuil: # dans ce cas, valeur = 1 sinon reste 0
-                    if self.last_T[i][j] > T_seuil: # notification par textos
-                        print("test2")
+                    if self.alreadySent[i][j] == False: # notification par textos
+                        self.alreadySent[i][j] = True
+                        print("FUCK")
                         self.alerter.sendAlert("Indice de gel au capteur " + str(j+1) + " de la rangée " + str(i+1))
                     if i == 0 and j == 0:
                         i_heat = i
@@ -46,6 +49,9 @@ class DecisionTaker():
                         i_hc = i_heat + 2
                         for c in range(j_heat-1,j_heat+2):
                             heat[i_hc][c] = 1 
+                else:
+                    self.alreadySent[i][j] = False
+
         
         
 
