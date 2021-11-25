@@ -1,6 +1,5 @@
 #from alert_sender import AlertSender
 
-DATA = {}
 
 def compute_data(temp_matrix):
     T = temp_matrix
@@ -41,7 +40,7 @@ def compute_data(temp_matrix):
                     for c in range(j_heat-1,j_heat+2):
                         heat[i_hc][c] = 1 
     last_T = T
-    DATA = {"heat":heat, "T_state":T_state, "T":T}
+    
 
     #display
     print('Nombre de bandes : ',nb_strip)
@@ -60,3 +59,4 @@ def compute_data(temp_matrix):
     print('États des sources de chaleurs :')
     for i in range(len(heat)):
         print(heat[i])
+    return {"heat":heat, "T_state":T_state, "T":T}

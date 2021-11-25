@@ -10,6 +10,7 @@ async def update(websocket, path):
     while True:
         if DATA:
             data = json.dumps(DATA)
+            print(data)
             await websocket.send(data)
         await asyncio.sleep(1)
 
