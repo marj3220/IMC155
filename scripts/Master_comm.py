@@ -42,7 +42,7 @@ def pi_arduino_communicator():
                     temperature_matrix[i][j] = temp
         k = 0
         for i in range(2):
-            for j in range(2):
+            for j in range(3):
                 cadeau[i][j] = temperature_matrix[0][k]
                 k=k+1
         print(cadeau)
