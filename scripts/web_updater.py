@@ -4,18 +4,22 @@ import asyncio
 import websockets
 import json
 
-DATA = {}
+from Master_comm import pi_arduino_communicator
 
 async def update(websocket, path):
     """Coroutine that sends data through websocket"""
+    unchecked_data = pi_arduino_communicator()
     while True:
         print("In true")
-        print(DATA)
-        if DATA:
-            data = json.dumps(DATA)
+        try:
+            checked_data = next(unchecked_data)
+            print(checked_data)    
+            data = json.dumps(checked_data)
             print("ree")
             print(data)
             await websocket.send(data)
+        except StopIteration:
+            pass
         await asyncio.sleep(1)
 
 def web_updater():

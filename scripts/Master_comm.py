@@ -2,7 +2,6 @@ import time
 import struct
 from algo_decision import compute_data
 from smbus import SMBus
-from web_updater import DATA
 
 slave = [0x08]               # array of slave addresses
 nb_slaves = len(slave)      # amount of slave devices
@@ -48,7 +47,6 @@ def pi_arduino_communicator():
                 k=k+1
         print(cadeau)
         print()    
-        global DATA
-        DATA = compute_data(cadeau)
-        print(DATA)
+        data = compute_data(cadeau)
+        yield data
         time.sleep(3)
